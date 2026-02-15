@@ -25,29 +25,29 @@ This project demonstrates a next-generation approach to cybersecurity: moving th
 git clone [https://github.com/daisymeal/AI-Cybersecurity-1st-project.git](https://github.com/daisymeal/AI-Cybersecurity-1st-project.git)
 cd ai-cyber
 
-2. Install Dependencies
+### 2. Install Dependencies
 Bash
 python -m venv venv
 .\venv\Scripts\activate
 pip install -r requirements.txt
-3. Run the AI Engine
+### 3. Run the AI Engine
 Bash
 uvicorn ai_engine:app --reload --port 8000
-4. Import n8n Workflow
+### 4. Import n8n Workflow
 Open n8n (localhost:5678).
 
 Go to Workflows > Import from File.
 
 Select n8n_workflow.json from this repository.
 
-Configure your SMTP credentials.
+### Configure your SMTP credentials.
 
-🧪 Testing (Simulation)
+### 🧪 Testing (Simulation)
 Send a simulated malicious payload via PowerShell:
 
 PowerShell
 $body = @{ ip="192.168.1.50"; size=120; payload="admin' OR 1=1 --" } | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri "http://localhost:5678/webhook-test/..." -Body $body
 
-📄 License
+### 📄 License
 MIT License - Free to use for educational purposes
