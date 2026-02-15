@@ -84,8 +84,8 @@
     },
     {
       "parameters": {
-        "fromEmail": "saxumking@gmail.com",
-        "toEmail": "meowtogetfood@gmail.com",
+        "fromEmail": "sender@gmail.com",
+        "toEmail": "receiver@gmail.com",
         "subject": "=🚨 Security Alert: Threat Detected from IP {{ $json.source_ip }}",
         "html": "=The Intel Core Ultra NPU on your XPS 13 has identified a malicious connection attempt. Source IP: {{ $json.source_ip }} has been flagged.\n\nThis is sent\n",
         "options": {}
