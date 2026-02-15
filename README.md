@@ -20,15 +20,15 @@ This project demonstrates a next-generation approach to cybersecurity: moving th
 
 ## 🚀 Installation & Setup
 
-1. Clone the Repository
+
 ```bash
+1. Clone the Repository
+
 git clone [https://github.com/daisymeal/AI-Cybersecurity-1st-project.git](https://github.com/daisymeal/AI-Cybersecurity-1st-project.git)
 cd AI-Cybersecurity-1st-project
 
 
 2. Install Dependencies
-
-Bash
 
 
 # Create a virtual environment
@@ -43,9 +43,6 @@ pip install -r requirements.txt
 
 3. Run the AI Engine
 
-Bash
-
-
 uvicorn ai_engine:app --reload --port 8000
 
 
@@ -56,8 +53,6 @@ Select n8n_workflow.json from this repository.
 Configure your SMTP credentials within the n8n nodes to enable email alerts.
 🧪 Testing (Simulation)
 You can test the system by sending a simulated malicious payload using PowerShell:
-
-PowerShell
 
 
 $body = @{ 
