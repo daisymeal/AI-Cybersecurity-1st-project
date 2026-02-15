@@ -56,7 +56,7 @@ You can test the system by sending a simulated malicious payload using PowerShel
 
 
 $body = @{ 
-    ip="192.168.1.50"; 
+    ip="19x.xxx.x.xx"; 
     size=120; 
     payload="admin' OR 1=1 --" 
 } | ConvertTo-Json
