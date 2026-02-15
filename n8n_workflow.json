@@ -1,0 +1,153 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "864e172d-2ca8-4941-960b-0066ca0a5d60",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "28979fdc-7108-4422-a911-005472fa2231",
+      "name": "Webhook",
+      "webhookId": "864e172d-2ca8-4941-960b-0066ca0a5d60"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/analyze",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "ip",
+              "value": "={{ $json.body.ip }}"
+            },
+            {
+              "name": "size",
+              "value": "={{ $json.body.size }}"
+            },
+            {
+              "name": "payload",
+              "value": "={{ $json.body.payload }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "5bcc2576-2727-4058-9001-02fab89ca9f3",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "090a5007-7a3d-4cca-a04a-bcda718775db",
+              "leftValue": true,
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "33d35b8d-694d-47cc-9771-5885ccc15bdf",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fromEmail": "saxumking@gmail.com",
+        "toEmail": "meowtogetfood@gmail.com",
+        "subject": "=🚨 Security Alert: Threat Detected from IP {{ $json.source_ip }}",
+        "html": "=The Intel Core Ultra NPU on your XPS 13 has identified a malicious connection attempt. Source IP: {{ $json.source_ip }} has been flagged.\n\nThis is sent\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        -96
+      ],
+      "id": "c912d622-995e-4568-8522-a9f6416f5b60",
+      "name": "Send an Email",
+      "webhookId": "1dcc6ef6-d643-4631-a3c6-35df76f48986",
+      "alwaysOutputData": false,
+      "retryOnFail": true,
+      "notesInFlow": true,
+      "credentials": {
+        "smtp": {
+          "id": "2Ato67aFa06qjYH6",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3ff36edd623f51547ac707d4cda9739ba30d6ad4c5eddf28e2be8d1b79d6540b"
+  }
+}
