@@ -20,7 +20,7 @@ This project demonstrates a next-generation approach to cybersecurity: moving th
 
 ## 🚀 Installation & Setup
 
-### 1. Clone the Repository
+1. Clone the Repository
 ```bash
 git clone [https://github.com/daisymeal/AI-Cybersecurity-1st-project.git](https://github.com/daisymeal/AI-Cybersecurity-1st-project.git)
 cd AI-Cybersecurity-1st-project
