@@ -1,4 +1,4 @@
-# 🛡️ AI-Powered Autonomous Network Defense System
+# 🛡️ Local AI Security Experiment: NPU-Accelerated Threat Detection
 
 **A localized SOAR (Security Orchestration, Automation, and Response) pipeline powered by Intel Core Ultra NPU.**
 
